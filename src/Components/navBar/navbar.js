@@ -67,7 +67,7 @@ const Navbar = () => {
               }
               to="/computer"
             >
-              Copmuter
+              Computer
             </NavLink>
           </span>
           <span className="nv-b-item mx-2">
@@ -140,26 +140,6 @@ const Navbar = () => {
               Your Amazon.eg
             </NavLink>
           </span>
-          <span className="nv-b-item mx-2">
-            <NavLink className="nav-item" to="/cards">
-              <a className="nav-link text-white" href="cart.html">
-                <i
-                  className="fas fa-shopping-cart"
-                  style={{ fontSize: " 19pt;" }}
-                ></i>
-                Cart{" "}
-                <sup>
-                  <span
-                    className="badge badge-warning p-1 font-weight-bold"
-                    id="cartCounter"
-                  >
-                    {counter}
-                  </span>
-                </sup>
-              </a>
-            </NavLink>
-          </span>
-          {/* <span className="nv-b-item mx-2 w-25"><a href="#"><img src='./2PNG.PNG' /></a></span> */}
         </div>
       </div>
     </div>

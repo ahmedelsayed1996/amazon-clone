@@ -19,9 +19,9 @@ const Fashion = () => {
 //             console.log(Fashion, newData);
 //         }) 
 // }
-const citiesRef = collection(db, "products");
+const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(citiesRef, where("idcat", "==", "fashion"));
+    const q = query(productsRef, where("idcat", "==", "fashion"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });

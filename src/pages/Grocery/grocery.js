@@ -23,9 +23,9 @@ const Grocery = () => {
   //         }) 
   // }
 
-  const citiesRef = collection(db, "products");
+  const productsRef = collection(db, "products");
   const fetchPost = async () => {
-    const q = query(citiesRef, where("idcat", "==", "grocery"));
+    const q = query(productsRef, where("idcat", "==", "grocery"));
     const querySnapshot = await getDocs(q);
     const products = [];
     querySnapshot.forEach((doc) => { products.push(doc.data()); });

@@ -15,9 +15,9 @@ const Mobile = () => {
   const [fillter, setFillter] = useState("");
   const [sort, setSort] = useState(false);
 
-  const citiesRef = collection(db, "products");
+  const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(citiesRef, where("idcat", "==", "mobile"));
+    const q = query(productsRef, where("idcat", "==", "mobile"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });

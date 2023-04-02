@@ -27,9 +27,9 @@ const Videos = () => {
 //             console.log(Videos, newData);
 //         }) 
 // }
-const citiesRef = collection(db, "products");
+const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(citiesRef, where("idcat", "==", "videos"));
+    const q = query(productsRef, where("idcat", "==", "videos"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });

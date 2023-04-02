@@ -19,6 +19,8 @@ import cards from "./pages/cards/cards";
 import Cards from "./pages/cards/cards";
 import Sidebar from "./Components/sidepar/sidebar";
 import Search from "./pages/search/search";
+import { Signup } from "./pages/signup/signup";
+import { Login } from "./pages/login/login";
 function App() {
   return (
     <>
@@ -39,6 +41,8 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/signup"element={<Signup/>}/>
+        <Route path="/login"element={<Login/>}/>
       </Routes>
       <Footer />
     </>

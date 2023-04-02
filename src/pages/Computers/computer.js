@@ -20,9 +20,9 @@ const Computer = () => {
 //             console.log(Computurs, newData);
 //         }) 
 // }
-const citiesRef = collection(db, "products");
+const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(citiesRef, where("idcat", "==", "computer"));
+    const q = query(productsRef, where("idcat", "==", "computer"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });
