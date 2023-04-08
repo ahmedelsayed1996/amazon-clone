@@ -12,12 +12,12 @@ const Mobile = () => {
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
   const dispatch = useDispatch();
-  const [fillter, setFillter] = useState("");
-  const [sort, setSort] = useState(false);
+  // const [fillter, setFillter] = useState("");
+  // const [sort, setSort] = useState(false);
 
   const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(productsRef, where("idcat", "==", "mobile"));
+    const q = query(productsRef, where("category", "==", "mobile"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });

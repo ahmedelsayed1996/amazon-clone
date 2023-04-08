@@ -21,7 +21,32 @@ import Sidebar from "./Components/sidepar/sidebar";
 import Search from "./pages/search/search";
 import { Signup } from "./pages/signup/signup";
 import { Login } from "./pages/login/login";
+import { auth } from "./firebase";
+import { useEffect } from "react";
+import { useAuth } from "./context/GlobalProvider";
 function App() {
+  const {dispatch} =useAuth()
+  useEffect(()=>{
+auth.onAuthStateChanged((authuser)=>{
+if(authuser){
+dispatch({
+
+  type:"SET_USER",
+  user:authuser,
+});
+  
+}else{
+  dispatch({
+
+    type:"SET_USER" ,
+    user:null,
+  });
+
+}
+}
+ )
+
+   },[])
   return (
     <>
       <Header />

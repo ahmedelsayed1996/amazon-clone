@@ -22,7 +22,7 @@ const Electronics = () => {
   // }
   const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(productsRef, where("idcat", "==", "mobile"));
+    const q = query(productsRef, where("category", "==", "mobile"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });

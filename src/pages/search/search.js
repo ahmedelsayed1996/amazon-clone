@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Link } from 'react-router-dom';
 import { db } from '../../firebase';
 import changeCards, { changeCounter } from '../../store/action';
-// import fireDb from 'firebase'
-
 
 const Search = () => {
 
@@ -45,9 +43,9 @@ const Search = () => {
         })
         setsearchdata(resData)
     }
-    useEffect(() => {
+    useEffect(() => { 
         fetchPost();
-    }, [])
+    }, [search])
     return (
         <div className="container">
 

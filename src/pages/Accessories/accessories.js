@@ -23,7 +23,7 @@ const Accessories = () => {
 // }
 const productsRef = collection(db, "products");
   const fetchPost = async ()=>{
-    const q = query(productsRef, where("idcat", "==", "accessory"));
+    const q = query(productsRef, where("category", "==", "accessory"));
     const querySnapshot = await getDocs(q);
      const products = []; 
      querySnapshot.forEach((doc) => { products.push(doc.data()); });
