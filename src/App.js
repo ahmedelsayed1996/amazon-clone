@@ -19,15 +19,21 @@ import cards from "./pages/cards/cards";
 import Cards from "./pages/cards/cards";
 import Sidebar from "./Components/sidepar/sidebar";
 import Search from "./pages/search/search";
+import Signin from "./pages/SginIn/signin";
+// import Register from "./pages/Register/register";
 function App() {
   return (
     <>
+    
       <Header />
       <Navbar />
       {/* <Sidebar /> */}
       {/* <Home/> */}
+      
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Signin />} />
+        {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/clothing" element={<Clothing />} />
         <Route path="/computer" element={<Computer />} />
@@ -39,6 +45,8 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/search" element={<Search />} />
+
+        
       </Routes>
       <Footer />
     </>

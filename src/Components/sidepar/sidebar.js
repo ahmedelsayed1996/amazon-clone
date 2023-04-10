@@ -1,7 +1,14 @@
 import React from "react";
 import "./sidebar.css";
 
+
+
+
 const Sidebar = () => {
+
+
+
+
   return (
     // <div id="navcolo" className="navbar p-1  d-none  d-md-block d-lg-blok  ">
     //   <div className="d-flex">
