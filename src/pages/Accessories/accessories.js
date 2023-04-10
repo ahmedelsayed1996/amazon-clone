@@ -8,33 +8,46 @@ import { db } from '../../firebase';
 
 const Accessories = () => {
   const [accessoriy, setaccessoriy] = useState([]);
+  const [categories, setCategory] = useState([]);
+
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
   const dispatch = useDispatch();
 
-//   const fetchPost = async () => {
-//     await getDocs(collection(db, "accessoriy"))
-//         .then((querySnapshot)=>{              
-//             const newData = querySnapshot.docs
-//                 .map((doc) => ({...doc.data(), id:doc.id }));
-//                 setaccessoriy(newData);                
-//             console.log(accessoriy, newData);
-//         }) 
-// }
-const productsRef = collection(db, "products");
-  const fetchPost = async ()=>{
+  //   const fetchPost = async () => {
+  //     await getDocs(collection(db, "accessoriy"))
+  //         .then((querySnapshot)=>{              
+  //             const newData = querySnapshot.docs
+  //                 .map((doc) => ({...doc.data(), id:doc.id }));
+  //                 setaccessoriy(newData);                
+  //             console.log(accessoriy, newData);
+  //         }) 
+  // }
+  const productsRef = collection(db, "products");
+  const fetchPost = async () => {
     const q = query(productsRef, where("category", "==", "accessory"));
     const querySnapshot = await getDocs(q);
-     const products = []; 
-     querySnapshot.forEach((doc) => { products.push(doc.data()); });
-     setaccessoriy(products);
+    const products = [];
+    querySnapshot.forEach((doc) => { products.push(doc.data()); });
+    setaccessoriy(products);
+  }
+
+  const categoryRef = collection(db, "category");
+  const fetchcat = async () => {
+    const q = query(categoryRef, where("name", "==", "accessory"));
+    const querySnapshot = await getDocs(q);
+    const category = [];
+    querySnapshot.forEach((doc) => { category.push(doc.data()); });
+    console.log(category);
+    setCategory(category);
   }
 
 
-useEffect(()=>{
-  fetchPost();
+  useEffect(() => {
+    fetchPost();
+    fetchcat();
 
-}, [])
+  }, [])
 
 
 
@@ -56,7 +69,19 @@ useEffect(()=>{
   return (
     <div className="container">
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        {accessoriy.map((prd,index) => {
+        {categories.map((cat, index) => {
+          return (
+            <div key={index}>
+              <h1>{cat.name}</h1>
+            <img
+              className="card-img-top "
+              src={cat.image}
+              alt="Card image cap"
+            />
+            </div>
+          )
+        })}
+        {accessoriy.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>
               <div class="card">
@@ -66,7 +91,7 @@ useEffect(()=>{
                   alt="Card image cap"
                 />
                 <div class="card-body">
-                  
+
                   <h5 className="card-title">{prd.name}</h5>
                   <p className="card-text"><strong>Description :</strong>  {prd.description}</p>
                   <h3>Price : {prd.price}</h3>

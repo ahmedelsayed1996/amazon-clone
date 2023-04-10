@@ -19,8 +19,8 @@ const Cards = () => {
   return (
     <>
       <div className="container-fluid ">
-     <h3>Hello, {user ? `${user.email}` : "Guest"}</h3>
-     
+        <h3>Hello, {user ? `${user.email}` : "Guest"}</h3>
+
         {/* <h3 className="hello">Hello ahmed</h3> */}
         <h2 className="checkout-title">Your shopping Basket</h2>
         <hr />
@@ -63,7 +63,7 @@ const Cards = () => {
               <small className="subtotal__gift">
                 <input type="checkbox" /> This order contains a gift
               </small>
-              <button onClick={()=>user?alert("goood"):navigate("/login")}>Proceed to Checkout</button>
+              <button onClick={() => user ? navigate("/checkout") : navigate("/login")}>Proceed to Checkout</button>
             </div>
           </div>
         </div>

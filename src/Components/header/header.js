@@ -97,7 +97,7 @@
 // ///////////////////////////////////////
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -122,6 +122,10 @@ const Header = () => {
     navigate(`/search?name=${search}`);
     setsearch("");
   };
+  useEffect(() => {
+    
+  //  console.log(user.uid);
+  }, []);
   // const usernameList = await usernameChecker(username)
 
   // if (!usernameList.length) {

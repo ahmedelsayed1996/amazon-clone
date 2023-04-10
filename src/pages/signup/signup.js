@@ -70,13 +70,6 @@ export const Signup = () => {
         e.preventDefault();
         console.log(username, email, password);
         createUserWithEmailAndPassword(auth, email, password).then(async (credentials) => {
-            // console.log(credentials.user.uid);
-            // addDoc(collection(db, "users"), {
-            //     fullName: fullName,
-            //     email: email,
-            //     password: password,
-            //     uid: credentials.user.uid,
-            // })
             const userRef = doc(db, 'users', credentials.user.uid);
             console.log(credentials.user.uid);
             setDoc(userRef, {

@@ -10,6 +10,8 @@ const Grocery = () => {
   const [grocery, setgrocery] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
+  const [categories, setCategory] = useState([]);
+
   const dispatch = useDispatch();
 
 
@@ -31,9 +33,19 @@ const Grocery = () => {
     querySnapshot.forEach((doc) => { products.push(doc.data()); });
     setgrocery(products);
   }
+  const categoryRef = collection(db, "category");
+  const fetchcat = async () => {
+    const q = query(categoryRef, where("name", "==", "grocery"));
+    const querySnapshot = await getDocs(q);
+    const category = [];
+    querySnapshot.forEach((doc) => { category.push(doc.data()); });
+    console.log(category);
+    setCategory(category);
+  }
 
   useEffect(() => {
     fetchPost();
+    fetchcat();
 
   }, [])
 
@@ -42,6 +54,24 @@ const Grocery = () => {
   return (
     <div className="container">
       <div class="row row-cols-1 row-cols-md-3 g-4">
+      {categories.map((cat, index) => {
+          return (
+            <div key={index} className="d-flex">
+             {/* <h1>{cat.name}</h1> */}
+              
+            <img
+              className="card-img-top w-50"
+              src={cat.image[1]}
+              alt="Card image cap"
+            />
+            <img
+              className="card-img-top w-50"
+              src={cat.image[index]}
+              alt="Card image cap"
+            />
+            </div>
+          )
+        })}
         {grocery.map((prd,index) => {
           return (
             <div class="col-md-4 my-3" key={index}>

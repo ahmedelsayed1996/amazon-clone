@@ -24,6 +24,9 @@ import { Login } from "./pages/login/login";
 import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
+import CheckOut from "./pages/order/CheckOut";
+
+
 function App() {
   const {dispatch} =useAuth()
   useEffect(()=>{
@@ -68,6 +71,8 @@ dispatch({
         <Route path="/search" element={<Search />} />
         <Route path="/signup"element={<Signup/>}/>
         <Route path="/login"element={<Login/>}/>
+        <Route path="/checkout"element={<CheckOut />}/>
+
       </Routes>
       <Footer />
     </>

@@ -10,6 +10,7 @@ const Clothing = () => {
   const [Fashion, setFashion] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
+  const [categories, setCategory] = useState([]);
   const dispatch = useDispatch();
 
 
@@ -31,10 +32,20 @@ const productsRef = collection(db, "products");
      querySnapshot.forEach((doc) => { products.push(doc.data()); });
      setFashion(products);
   }
+  const categoryRef = collection(db, "category");
+  const fetchcat = async () => {
+    const q = query(categoryRef, where("name", "==", "fashion"));
+    const querySnapshot = await getDocs(q);
+    const category = [];
+    querySnapshot.forEach((doc) => { category.push(doc.data()); });
+    console.log(category);
+    setCategory(category);
+  }
 
 
 useEffect(()=>{
   fetchPost();
+  fetchcat();
 
 }, [])
 
@@ -54,6 +65,18 @@ useEffect(()=>{
   return (
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">
+      {categories.map((cat, index) => {
+          return (
+            <div key={index}>
+              <h1>{cat.name}</h1>
+            <img
+              className="card-img-top "
+              src={cat.image}
+              alt="Card image cap"
+            />
+            </div>
+          )
+        })}
         {Fashion.map((prd,index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
