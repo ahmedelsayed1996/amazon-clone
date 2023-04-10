@@ -5,7 +5,37 @@
     "days_since_release": "لقد مرت {{number_of_days}} أيام على إصدار هذا الفيديو",
     "app_location": " التوصيل إلى ",
     "app_loca": "مصر",
-    "page_order": "مرتحعاتك ومشترياتك",
+    "page_order": "مرتحعاتك ",
+    "page_order2": "ومشترياتك",
+    "location": "الموقع",
+
+    "all_cat":"جميع الفئات",
+    "amazon_dev": "أجهزة أمازون",
+    "amazon_fash": "أزياء أمازون",
+    "amazon_baby": "أمازون بيبي",
+    "amazon_ware": "مستودع أمازون",
+    "auto_acces": "قطع غيار واكسسوارات السيارات",
+    "agrocery_food": "بقالة وطعام ذواقة",
+    "indu_scientific": "الصناعية والعلمية",
+    "amazon_music": "الات موسيقية",
+    "home_relat": "الصفحة الرئيسية ذات الصلة",
+    "amazon_care": "الجمال والعناية الشخصية",
+    "amazon_art": "الفنون والحرف والخياطة",
+    "amazon_sport": "رياضات",
+    "lang_en": "الانجليزية",
+    "lang_ar": "العربية",
+    "lang_eng": "الانجليزية",
+    "amazom_shop": "انت تتسوق على موقع امازون",
+    "welcom_mess": "مرحبا في",
+    "acount": "الحساب والقوائم",
+    "order": "الطلبات",
+    "amazon_name": "امازون",
+    "amazom_perf": "عطور",
+    "amazon_toy": "الالعاب والدمى",
+    "amazon_phon": "الهواتف الجوالة",
+    "amazon_app": "التطبيقات",
+    "ramadan_offer": "عروض رمضان",
+    "prim": "الرئيسي",
 
     "all_pages": " الكل",
     "home_page":"الصفحة الرئيسية",
@@ -32,7 +62,6 @@
     "app_store":"متجر التطبيقات",
     "google_play":"تطبيقات جوجل",
 
-    
     "let_help": "دعنا نساعدك",
     "help_center": "مركز المساعدة",
     "cotact_us": "تواصل معنا",
@@ -44,13 +73,11 @@
     "report_product": "الإبلاغ عن منتج",
     "about_amazon": "عن أمازون مصر",
 
-    
     "make_money" :"كسب المال مع امازون",
     "sell_amazon": "البيع على امازون",
     "become_logistics ": "كن شريكا للخدمات اللوجيستية",
     "become_sales": " (J-Force ) كن مستشار مبيعات ",
 
-    
     "international_amazon": "امازون انترناشيونال ",
     "country_alg": "الجزائر",
     "country_gha": "غانا",
@@ -58,7 +85,6 @@
     "country_mor": "المغرب",
     "join_us": "انضم إلينا",
 
-    
     "prime_free": "جرب بريم مجانا لمدة 30 يوما وتسوق صفقات التصفيات الرمضانية",
     "prime_exclusive": "رئيس الصفقات الحصرية",
     "extra_disc": "  خصم إضافي 10٪ * يصل إلى 150 جنيه",

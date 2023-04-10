@@ -5,8 +5,38 @@
     "days_since_release": "it's been {{number_of_days}} days since this video was released",
     "app_location": " Deliver to",
     "app_loca": "Egypt",
-    "page_order": "order",
-    
+    "page_order": "Returns",
+    "page_order2": "&Orders",
+    "location": "Location",
+
+    "all_cat":"All Categories",
+    "amazon_dev": "Amazon Devices",
+    "amazon_fash": "Amazon Fashino",
+    "amazon_baby": "Amazon Baby",
+    "amazon_ware": "Amazon Warehouse",
+    "auto_acces": " Automotive Parts & Accessories",
+    "agrocery_food": "Grocery & Gourmet Food",
+    "indu_scientific": "Industrial & Scientific",
+    "amazon_music": "Musical Instruments",
+    "home_relat": "Home Related",
+    "amazon_care": "Beauty & Personal Care",
+    "amazon_art": "Arts, Crafts & Sewing",
+    "amazon_sport": "Sports",
+    "lang_en": "EN",
+    "lang_ar": "AR",
+    "lang_eng": "English-EN",
+    "amazom_shop": "you are shopping on Amazon.eg",
+    "welcom_mess": "Hello, to",
+    "acount": "Account & Lists",
+    "order": "Orders",
+    "amazon_name": "Amazon",
+    "amazom_perf": "Perfumes",
+    "amazon_toy": "Toys & Games",
+    "amazon_phon": " Mobile Phones",
+    "amazon_app": "Appliances",
+    "ramadan_offer": "Ramadan Deals",
+    "prim": "Prime",
+
     "all_pages": " All",
     "home_page":"Home",
     "accessories-page": "Accessories",
@@ -69,6 +99,8 @@
     "men_pyj": "Men's Pyjamas",
     "women_pyj": "Women's Pyjamas",
     "discover_more": "Discover more"
+
+    
 
 
     

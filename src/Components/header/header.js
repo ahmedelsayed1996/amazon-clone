@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import "./header.css";
+import { useDispatch, useSelector } from "react-redux";
 
 import {auth} from '../../firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
@@ -72,6 +73,8 @@ const Header = () => {
     navigate('/login');
 }
 
+const counter = useSelector((state) => state.count);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-darke shadow-sm">
@@ -97,7 +100,7 @@ const Header = () => {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <form className="form-inline my-2 my-lg-0" style={{ width: "68%" }} onSubmit={handelSubmit}>
+            <form className="form-inline my-2 my-lg-0" style={{ width: "50%" }} onSubmit={handelSubmit}>
               <input
                 className="form-control mr-sm-2 w-75"
                 type="text"
@@ -112,9 +115,10 @@ const Header = () => {
               >
                 <i className="fa fa-search"></i>
               </button>
+            </form>
 
-
-              <div className="dropdown mx-2">
+            
+            <div className="dropdown mx-2">
             <button
               className="btn btn-link dropdown-toggle"
               type="button"
@@ -152,10 +156,8 @@ const Header = () => {
             </ul>
           </div>
 
-
-            </form>
-
             <ul className="navbar-nav mr-auto">
+         
 
               <li
                 className="nav-item "
@@ -201,18 +203,36 @@ const Header = () => {
 
               <li className="nav-item">
                 <a className="nav-link text-white" href="#">
-                  <strong>{t('page_order')}</strong>
+                  <strong style={{fontWeight:'10'}}>{t('page_order')}</strong><br/>
+                  <strong>{t('page_order2')}</strong>
                 </a>
               </li>
 
+              <li>
+
+                
+            <span className="nv-b-item mx-2">
+            <NavLink className="nav-item" to="/cards">
+              <a className="nav-link text-white" href="cart.html">
+                <i
+                  className="fas fa-shopping-cart"
+                  style={{ fontSize: " 19pt;" }}
+                ></i>
+                {t('Cart_page')}{" "}
+                <sup>
+                  <span
+                    className="badge badge-warning p-1 font-weight-bold"
+                    id="cartCounter"
+                  >
+                    {counter}
+                  </span>
+                </sup>
+              </a>
+            </NavLink>
+          </span>
+              </li>
+
             </ul>
-
-
-
-
-
-
-
 
             
           </div>

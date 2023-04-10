@@ -19,7 +19,7 @@ import cards from "./pages/cards/cards";
 import Cards from "./pages/cards/cards";
 import Sidebar from "./Components/sidepar/sidebar";
 import Search from "./pages/search/search";
-import Signin from "./pages/SginIn/signin";
+// import Signin from "./pages/SginIn/signin";
 // import Register from "./pages/Register/register";
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<Signin />} />
+        {/* <Route path="/signin" element={<Signin />} /> */}
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/clothing" element={<Clothing />} />
