@@ -8,7 +8,7 @@ import './checkout.css'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
 import { useAuth } from '../../context/GlobalProvider';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from '@firebase/firestore';
 import { db } from '../../firebase';
 
 const CheckOut = () => {

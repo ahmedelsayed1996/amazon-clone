@@ -1,0 +1,113 @@
+{
+    "app_title": "Amazon",
+    "language": "Language",
+    "welcome_message": "Hello ",
+    "days_since_release": "it's been {{number_of_days}} days since this video was released",
+    "app_location": " Deliver to",
+    "app_loca": "Egypt",
+    "page_order": "Returns",
+    "page_order2": "&Orders",
+    "location": "Location",
+
+    "all_cat":"All Categories",
+    "amazon_dev": "Amazon Devices",
+    "amazon_fash": "Amazon Fashino",
+    "amazon_baby": "Amazon Baby",
+    "amazon_ware": "Amazon Warehouse",
+    "auto_acces": " Automotive Parts & Accessories",
+    "agrocery_food": "Grocery & Gourmet Food",
+    "indu_scientific": "Industrial & Scientific",
+    "amazon_music": "Musical Instruments",
+    "home_relat": "Home Related",
+    "amazon_care": "Beauty & Personal Care",
+    "amazon_art": "Arts, Crafts & Sewing",
+    "amazon_sport": "Sports",
+    "lang_en": "EN",
+    "lang_ar": "AR",
+    "lang_eng": "English-EN",
+    "amazom_shop": "you are shopping on Amazon.eg",
+    "welcom_mess": "Hello, to",
+    "acount": "Account & Lists",
+    "order": "Orders",
+    "amazon_name": "Amazon",
+    "amazom_perf": "Perfumes",
+    "amazon_toy": "Toys & Games",
+    "amazon_phon": " Mobile Phones",
+    "amazon_app": "Appliances",
+    "ramadan_offer": "Ramadan Deals",
+    "prim": "Prime",
+
+    "all_pages": " All",
+    "home_page":"Home",
+    "accessories-page": "Accessories",
+    "electronics_page": "Electronics",
+    "clothing_Page": "Clothing",
+    "computer_page": "Computer",
+    "fashion_Page": "Fashion",
+    "grocery_Page": "Grocery",
+    "mobile_page": "Mobile",
+    "videos_Page": "Videos",
+    "tv_page": "TV",
+    "help_page": "Help",
+    "your_mazon.eg":"Your Amazon.eg",
+    "Cart_page": "Cart",
+
+    "backTo_top": "Back to Top",
+    "newto_amazon":"NEW TO AMAZON ?",
+    "subscribe":"Subscribe to our newsletter to get updates on our latest offers!",
+    "male":"Male",
+    "female":"Female",
+    "downloadamazonfree_app":"DOWNLOAD AMAZON FREE APP",
+    "get_access":"Get access to exclusive offers!",
+    "app_store":"App Store",
+    "google_play":"Google Play",
+
+    "let_help": "LET US HELP YOU",
+    "help_center": "Help Center",
+    "cotact_us": "Cotact US",
+    "howbuy_amazon": "How to buy on Amazon?",
+    "pay_amazon": "How to pay on Amazon?",
+    "delivery": "Delivery timelines",
+    "return_policy": "Return Policy",
+    "corprate_services": "Corporate Services",
+    "report_product": "Report a Product",
+    "about_amazon": "ABOUT AMAZON EGYPT",
+
+    "make_money" :"MAKE MONEY WITH AMAZON",
+    "sell_amazon": "Sell on Amazon",
+    "become_logistics": "Become a Logistics Service Partner",
+    "become_sales": "Become a Sales Consultant (J-Force )",
+
+    "international_amazon": "AMAZON INTERNATIONAL",
+    "country_alg": "Algeria",
+    "country_gha": "Ghana",
+    "country_ken": "Kenya",
+    "country_mor": "Morocco",
+    "join_us": "JOIN US ON",
+
+    "prime_free": "Try Prime FREE for 30 days and shop Ramadan Sale deals",
+    "prime_exclusive": "Prime exclusive deals",
+    "extra_disc": "  Extra 10% off* up to 150 EGP",
+    "free_shipping": "FREE shipping on all deals",
+    "aword_tv": " Award-winning movies and TV shows",
+    "try_prime": "Try Prime FREE",
+    "ramdan_box": " Ramadan Box | Only for EGP 249",
+    "see_more": "  See more",
+    "ramdan_sale": " Ramadan Sale | Basics | Low Prices",
+    "men_under": "Men's Underwear",
+    "women_under": "Women's Underwear",
+    "men_pyj": "Men's Pyjamas",
+    "women_pyj": "Women's Pyjamas",
+    "discover_more": "Discover more"
+
+    
+
+
+    
+
+
+
+
+    
+
+  }

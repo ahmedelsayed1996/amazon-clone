@@ -3,7 +3,7 @@ import {Link, } from 'react-router-dom'
 
 import { useNavigate } from "react-router-dom";
 import { auth } from '../../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from '@firebase/auth';
 export const Login = () => {
     const navigate = useNavigate();
    
