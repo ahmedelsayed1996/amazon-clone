@@ -3,7 +3,7 @@ import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
 
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axioss from "../../axios/axios";
 import { useDispatch, useSelector } from "react-redux";
 import changeCards, { changeCounter } from "../../store/action";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
 

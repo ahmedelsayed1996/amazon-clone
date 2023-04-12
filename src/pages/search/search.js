@@ -1,4 +1,4 @@
-import { collection, getDocs, where } from 'firebase/firestore';
+import { collection, getDocs, where } from '@firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Link } from 'react-router-dom';
