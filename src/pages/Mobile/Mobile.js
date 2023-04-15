@@ -5,8 +5,6 @@ import changeCards, { changeCounter } from "../../store/action";
 import { collection, getDocs, orderBy, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
-
-
 const Mobile = () => {
   const [Mobile, setMobile] = useState([]);
   const cards = useSelector((state) => state.card);
@@ -14,7 +12,6 @@ const Mobile = () => {
   const dispatch = useDispatch();
   const [fillter, setFillter] = useState("");
   const [sort, setSort] = useState(false);
-
   const citiesRef = collection(db, "products");
   const fetchPost = async ()=>{
     const q = query(citiesRef, where("idcat", "==", "mobile"));
