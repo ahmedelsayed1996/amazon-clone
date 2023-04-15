@@ -70,32 +70,42 @@ const Mobile = () => {
             </div>
           )
         })}
-        {Mobile.map((prd,index) => {
-          return (
-            <div class="col-md-4 my-3" key={index}>
-              <div class="card ">
-                <img
-                  className="card-img-top h-50"
-                  src={prd.image}
-                  alt="Card image cap"
-                />
-                <div class="card-body ">
-                  <h5 className="card-title">{prd.name}</h5>
-                  <p className="card-text"><strong>Description :</strong> {prd.description}</p>
-                  <h3>Price : {prd.price}</h3>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      dispatch(changeCards([...cards, prd]));
-                      dispatch(changeCounter(counter + 1));
-                    }}
-                  >Add To Cards
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {Mobile.map((prd, index) => {
+  return (
+    <div className="col-md-4 my-3" key={index}>
+      <div className="card">
+        <img
+          className="card-img-top"
+          src={prd.image}
+          alt={prd.name}
+          style={{ maxWidth: "100%", height: "auto", objectFit: "cover" }}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{prd.name}</h5>
+          <p className="card-text mb-2"><strong>Description:</strong> {prd.description}</p>
+          <h3 className="mb-4">Price: {prd.price}</h3>
+          <button
+            className="btn btn-warning btn-sm"
+            onClick={() => {
+              dispatch(changeCards([...cards, prd]));
+              dispatch(changeCounter(counter + 1));
+            }}
+            style={{
+              fontSize: "14px",
+              borderWidth: "3px",
+              borderRadius: "10px",
+              borderStyle: "solid",
+              padding: "0 20px",
+              textTransform: "uppercase"
+            }}
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+})}
       </div>
       {/* <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col-md-4 my-3">
