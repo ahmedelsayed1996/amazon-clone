@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 
 import {
   createUserWithEmailAndPassword,
@@ -13,7 +14,39 @@ import Logo from "../images/Logo.png";
 
 import { addDoc, collection, getDocs, doc, setDoc } from "@firebase/firestore";
 
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'ar',
+    name: 'العربية',
+    dir: 'rtl',
+    country_code: 'sa',
+  },
+]
+
+
 export const Signup = () => {
+
+      //language
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    console.log('Setting page stuff')
+    document.body.dir = currentLanguage.dir || 'ltr'
+    document.title = t('app_title')
+  }, [currentLanguage, t]);
+
   const localUser = JSON.parse(localStorage.getItem("userName"));
   const navigate = useNavigate();
 
@@ -71,9 +104,11 @@ export const Signup = () => {
         <img className="login-logo" src={Logo} alt="logo-img" />
       </Link>
       <div className="login-container">
-        <h1>Sign up</h1>
+
+        <h1>{t("signup")}</h1>
         <form onSubmit={handleSignup}>
-          <h5>User Name</h5>
+          <h5>{t("username")}</h5>
+
           <input
             type="text"
             className="form-control"
@@ -81,7 +116,8 @@ export const Signup = () => {
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           ></input>
-          <h5>Email</h5>
+          <h5>{t("email")}</h5>
+
           <input
             type="email"
             className="form-control"
@@ -89,7 +125,8 @@ export const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           ></input>
-          <h5>Password</h5>
+          <h5>{t("password")}</h5>
+
           <input
             type="password"
             className="form-control"
@@ -98,14 +135,14 @@ export const Signup = () => {
             value={password}
           ></input>
           <button className="login-signInBtn" type="submit">
-            Sign Up
+          {t("signup")}
           </button>
           <p>
-            By continuing, you agree to Amazon's Fake Clone Conditions of Use
-            and Privacy Notice.
+          {t("rules")}
           </p>
           <button className="login-registerBtn" onClick={signIn}>
-            You have already an account
+          {t("acount2")}
+
           </button>
         </form>
       </div>

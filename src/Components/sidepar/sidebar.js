@@ -1,7 +1,42 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./sidebar.css";
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+
+const languages = [
+
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'ar',
+    name: 'العربية',
+    dir: 'rtl',
+    country_code: 'sa',
+  },
+]
+
+
 const Sidebar = () => {
+
+  //language
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    console.log('Setting page stuff')
+    document.body.dir = currentLanguage.dir || 'ltr'
+    document.title = t('app_title')
+  }, [currentLanguage, t])
+
+
+
   return (
     // <div id="navcolo" className="navbar p-1  d-none  d-md-block d-lg-blok  ">
     //   <div className="d-flex">
@@ -707,8 +742,8 @@ const Sidebar = () => {
             </div>
 
             <div className="d-flex flex-column hovee">
-              <span className="fw-light nv1">Deleiver to</span>
-              <span className="fs-6 fw-bold ">location</span>
+              <span className="fw-light nv1">{t("app_location")}</span>
+              <span className="fs-6 fw-bold ">{t("location")}</span>
             </div>
             <form className="container-fluid">
               <div className="input-group p-1 mx-2 ">
@@ -720,52 +755,52 @@ const Sidebar = () => {
                     aria-expanded="false"
                     id="bo"
                   >
-                    All
+                   {t("all_pages")}
                   </button>
                   <select className="dropdown-menu" size="10">
                     <option className="ss">
-                      <a className="dropdown-item ">All Categories</a>
+                      <a className="dropdown-item ">{t("all_cat")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Amazon Devices</a>
+                      <a className="dropdown-item">{t("amazon_dev")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Amazon Fashino</a>
+                      <a className="dropdown-item">{t("amazon_fash")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Amazon Baby</a>
+                      <a className="dropdown-item">{t("amazon_baby")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Amazon Warehouse</a>
+                      <a className="dropdown-item">{t("amazon_ware")}</a>
                     </option>
                     <option>
                       <a className="dropdown-item">
-                        Automotive Parts & Accessories
+                      {t("auto_acces")}
                       </a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Grocery & Gourmet Food</a>
+                      <a className="dropdown-item">{t("agrocery_food")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Industrial & Scientific</a>
+                      <a className="dropdown-item">{t("indu_scientific")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Musical Instruments</a>
+                      <a className="dropdown-item">{t("amazon_music")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Home Related</a>
+                      <a className="dropdown-item">{t("home_relat")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Grocery & Gourmet Food</a>
+                      <a className="dropdown-item">{t("agrocery_food")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Beauty & Personal Care</a>
+                      <a className="dropdown-item">{t("amazon_care")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Arts, Crafts & Sewing</a>
+                      <a className="dropdown-item">{t("amazon_art")}</a>
                     </option>
                     <option>
-                      <a className="dropdown-item">Sports</a>
+                      <a className="dropdown-item">{t("amazon_sport")}</a>
                     </option>
                   </select>
                 </span>
@@ -793,7 +828,7 @@ const Sidebar = () => {
                   <span>
                     <img src="./Images/Eg.png" className="img-ico" />
                   </span>
-                  <span className="dropdown-toggle fw-bold ">EN</span>
+                  <span className="dropdown-toggle fw-bold ">{t("lang_en")}</span>
                   <span className="caret"></span>
                   <ul className="dropdown-menu ">
                     <li className="px-2 ">
@@ -803,7 +838,7 @@ const Sidebar = () => {
                         name="fav_language"
                         value="HTML"
                       />
-                      <label for="html">العربية-AR</label>
+                      <label for="html">{t("lang_ar")}</label>
                       <br />
                     </li>
                     <hr />
@@ -814,7 +849,7 @@ const Sidebar = () => {
                         name="fav_language"
                         value="HTML"
                       />
-                      <label for="html">English-EN</label>
+                      <label for="html">{t("lang_eng")}</label>
                       <br />
                     </li>
                     <hr />
@@ -823,7 +858,7 @@ const Sidebar = () => {
                         <img src="./Images/Eg.png" className="img-ico" />
                         <span>
                           <p style="font-size:  11px;">
-                            you are shopping on Amazon.eg
+                          {t("amazom_shop")}
                           </p>
                         </span>
                       </span>
@@ -833,14 +868,14 @@ const Sidebar = () => {
               </div>
             </form>
             <div className=" d-flex flex-column hovee ">
-              <div className="fw-light nv1">Hello, to</div>
+              <div className="fw-light nv1">{t("welcom_mess")}</div>
               <div className=" fw-bold  " style="font-size: 12px;">
-                Account & Lists
+              {t("acount")}
               </div>
             </div>
 
             <div className="mx-4 mt-4 ">
-              <a className="fw-bold text-decoration-none">Orders</a>
+              <a className="fw-bold text-decoration-none">{t("order")}</a>
             </div>
 
             <div className=" mt-3 ">
@@ -879,7 +914,7 @@ const Sidebar = () => {
                   data-bs-target="#offcanvasScrolling"
                   aria-controls="offcanvasScrolling"
                 >
-                  <i className="fa-solid fa-bars px-1  "></i>All
+                  <i className="fa-solid fa-bars px-1  "></i>{t("all_pages")}
                 </a>
                 <div
                   className="offcanvas offcanvas-start"
@@ -897,7 +932,7 @@ const Sidebar = () => {
                       className="offcanvas-title"
                       id="offcanvasScrollingLabel"
                     >
-                      Amazon
+                      {t("amazon_name")}
                     </h5>
                     <button
                       type="button"
@@ -909,7 +944,7 @@ const Sidebar = () => {
                   <div className="offcanvas-body">
                     <ul className="d-flex flex-column">
                       <li className="">
-                        <a className="text-decoration-none text-dark">Home</a>
+                        <a className="text-decoration-none text-dark">{t("home_page")}</a>
                       </li>
 
                       <li className="mx-">
@@ -919,40 +954,40 @@ const Sidebar = () => {
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Perfumes
+                        {t("amazom_perf")}
                         </a>
                       </li>
                       <li className="mx-">
-                        <a className="text-decoration-none text-dark">Help</a>
+                        <a className="text-decoration-none text-dark">{t("help_page")}</a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Toys & Games
-                        </a>
-                      </li>
-                      <li className="mx-">
-                        <a className="text-decoration-none text-dark">
-                          Mobile Phones
+                          {t("amazon_toy")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Fashion
+                          {t("amazon_phon")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Grocery
+                        {t("fashion_Page")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Appliances
+                          {t("grocery_Page")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Mobile Phones
+                         {t("amazon_app")}
+                        </a>
+                      </li>
+                      <li className="mx-">
+                        <a className="text-decoration-none text-dark">
+                        {t("amazon_phon")}
                         </a>
                       </li>
                     </ul>
@@ -997,7 +1032,7 @@ const Sidebar = () => {
                 data-bs-target="#staticBackdrop"
                 aria-controls="staticBackdrop"
               >
-                <i className="fa-solid fa-bars px-1  "></i>All
+                <i className="fa-solid fa-bars px-1  "></i>{t("all_pages")}
               </a>
 
               <div
@@ -1016,7 +1051,7 @@ const Sidebar = () => {
                     id="staticBackdropLabel"
                     style="color: aliceblue;"
                   >
-                    Amazon
+                    {t("amazon_name")}
                   </h5>
                   <button
                     type="button"
@@ -1029,7 +1064,7 @@ const Sidebar = () => {
                   <div>
                     <ul className="d-flex flex-column">
                       <li className="">
-                        <a className="text-decoration-none text-dark">Home</a>
+                        <a className="text-decoration-none text-dark">{t("home_page")}</a>
                       </li>
 
                       <li className="mx-">
@@ -1039,40 +1074,40 @@ const Sidebar = () => {
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Perfumes
+                        {t("amazom_perf")}
                         </a>
                       </li>
                       <li className="mx-">
-                        <a className="text-decoration-none text-dark">Help</a>
+                        <a className="text-decoration-none text-dark">{t("help_page")}</a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Toys & Games
-                        </a>
-                      </li>
-                      <li className="mx-">
-                        <a className="text-decoration-none text-dark">
-                          Mobile Phones
+                        {t("amazon_toy")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Fashion
+                        {t("amazon_phon")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Grocery
+                        {t("fashion_Page")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Appliances
+                        {t("grocery_Page")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Mobile Phones
+                        {t("amazon_app")}
+                        </a>
+                      </li>
+                      <li className="mx-">
+                        <a className="text-decoration-none text-dark">
+                        {t("amazon_phon")}
                         </a>
                       </li>
                     </ul>
@@ -1082,12 +1117,12 @@ const Sidebar = () => {
               </div>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Ramadan Deals</a>
+              <a className="text-decoration-none">{t("ramadan_offer")}</a>
             </li>
             <li className="mx-">
               <a className="text-decoration-none"></a>
               <div className="dropdown  ">
-                <span className="dropdown-toggle fw-bold ">Prime</span>
+                <span className="dropdown-toggle fw-bold ">{t("prim")}</span>
                 <ul className="dropdown-menu ">
                   <li className="px-2 ">
                     <img src="./Images/pimepic.png" alt="" />
@@ -1096,34 +1131,34 @@ const Sidebar = () => {
               </div>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Home</a>
+              <a className="text-decoration-none">{t("home_page")}</a>
             </li>
             <li className="mx-">
               <a className="text-decoration-none">Amazon.eg</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Perfumes</a>
+              <a className="text-decoration-none">{t("amazom_perf")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Help</a>
+              <a className="text-decoration-none">{t("help_page")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Toys & Games</a>
+              <a className="text-decoration-none"> {t("amazon_toy")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Mobile Phones</a>
+              <a className="text-decoration-none">{t("amazon_phon")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Fashion</a>
+              <a className="text-decoration-none"> {t("fashion_Page")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Grocery</a>
+              <a className="text-decoration-none">{t("grocery_Page")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Appliances</a>
+              <a className="text-decoration-none">{t("amazon_app")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Mobile Phones</a>
+              <a className="text-decoration-none">{t("amazon_phon")}</a>
             </li>
             <li className="">
               <img
@@ -1146,7 +1181,7 @@ const Sidebar = () => {
                 data-bs-target="#offcanvasScrolling"
                 aria-controls="offcanvasScrolling"
               >
-                <i className="fa-solid fa-bars px-1  "></i>All
+                <i className="fa-solid fa-bars px-1  "></i>{t("all_pages")}
               </a>
               <div
                 className="offcanvas offcanvas-start"
@@ -1161,7 +1196,7 @@ const Sidebar = () => {
                   style="background-color: #304053;"
                 >
                   <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
-                    Amazon
+                  {t("amazon_name")}
                   </h5>
                   <button
                     type="button"
@@ -1173,7 +1208,7 @@ const Sidebar = () => {
                 <div className="offcanvas-body">
                   <ul className="d-flex flex-column">
                     <li className="">
-                      <a className="text-decoration-none text-dark">Home</a>
+                      <a className="text-decoration-none text-dark">{t("home_page")}</a>
                     </li>
 
                     <li className="mx-">
@@ -1182,35 +1217,35 @@ const Sidebar = () => {
                       </a>
                     </li>
                     <li className="mx-">
-                      <a className="text-decoration-none text-dark">Perfumes</a>
+                      <a className="text-decoration-none text-dark">{t("amazom_perf")}</a>
                     </li>
                     <li className="mx-">
-                      <a className="text-decoration-none text-dark">Help</a>
+                      <a className="text-decoration-none text-dark">{t("help_page")}</a>
                     </li>
                     <li className="mx-">
                       <a className="text-decoration-none text-dark">
-                        Toys & Games
+                      {t("amazon_toy")}
                       </a>
                     </li>
                     <li className="mx-">
                       <a className="text-decoration-none text-dark">
-                        Mobile Phones
+                      {t("amazon_phon")}
                       </a>
                     </li>
                     <li className="mx-">
-                      <a className="text-decoration-none text-dark">Fashion</a>
+                      <a className="text-decoration-none text-dark"> {t("fashion_Page")}</a>
                     </li>
                     <li className="mx-">
-                      <a className="text-decoration-none text-dark">Grocery</a>
+                      <a className="text-decoration-none text-dark">{t("grocery_Page")}</a>
                     </li>
                     <li className="mx-">
                       <a className="text-decoration-none text-dark">
-                        Appliances
+                      {t("amazon_app")}
                       </a>
                     </li>
                     <li className="mx-">
                       <a className="text-decoration-none text-dark">
-                        Mobile Phones
+                      {t("amazon_phon")}
                       </a>
                     </li>
                   </ul>
@@ -1218,12 +1253,12 @@ const Sidebar = () => {
               </div>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Ramadan Deals</a>
+              <a className="text-decoration-none">{t("ramadan_offer")}</a>
             </li>
             <li className="mx-">
               <a className="text-decoration-none"></a>
               <div className="dropdown  ">
-                <span className="dropdown-toggle fw-bold ">Prime</span>
+                <span className="dropdown-toggle fw-bold ">{t("prim")}</span>
                 <ul className="dropdown-menu ">
                   <li className="px-2 ">
                     <img src="./Images/pimepic.png" alt="" />
@@ -1232,13 +1267,13 @@ const Sidebar = () => {
               </div>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Home</a>
+              <a className="text-decoration-none">{t("home_page")}</a>
             </li>
             <li className="mx-">
               <a className="text-decoration-none">Amazon.eg</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Help</a>
+              <a className="text-decoration-none">{t("help_page")}</a>
             </li>
           </ul>
         </div>
@@ -1253,7 +1288,7 @@ const Sidebar = () => {
                 data-bs-target="#staticBackdrop"
                 aria-controls="staticBackdrop"
               >
-                <i className="fa-solid fa-bars px-1  "></i>All
+                <i className="fa-solid fa-bars px-1  "></i>{t("all_pages")}
               </a>
 
               <div
@@ -1272,7 +1307,7 @@ const Sidebar = () => {
                     id="staticBackdropLabel"
                     style="color: aliceblue;"
                   >
-                    Amazon
+                    {t("amazon_name")}
                   </h5>
                   <button
                     type="button"
@@ -1285,7 +1320,7 @@ const Sidebar = () => {
                   <div>
                     <ul className="d-flex flex-column">
                       <li className="">
-                        <a className="text-decoration-none text-dark">Home</a>
+                        <a className="text-decoration-none text-dark">{t("home_page")}</a>
                       </li>
 
                       <li className="mx-">
@@ -1295,40 +1330,40 @@ const Sidebar = () => {
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Perfumes
+                        {t("amazom_perf")}
                         </a>
                       </li>
                       <li className="mx-">
-                        <a className="text-decoration-none text-dark">Help</a>
+                        <a className="text-decoration-none text-dark">{t("help_page")}</a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Toys & Games
-                        </a>
-                      </li>
-                      <li className="mx-">
-                        <a className="text-decoration-none text-dark">
-                          Mobile Phones
+                        {t("amazon_toy")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Fashion
+                        {t("amazon_phon")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Grocery
+                        {t("fashion_Page")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Appliances
+                        {t("grocery_Page")}
                         </a>
                       </li>
                       <li className="mx-">
                         <a className="text-decoration-none text-dark">
-                          Mobile Phones
+                        {t("amazon_app")}
+                        </a>
+                      </li>
+                      <li className="mx-">
+                        <a className="text-decoration-none text-dark">
+                        {t("amazon_phon")}
                         </a>
                       </li>
                     </ul>
@@ -1338,12 +1373,12 @@ const Sidebar = () => {
               </div>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Ramadan Deals</a>
+              <a className="text-decoration-none">{t("ramadan_offer")}</a>
             </li>
             <li className="mx-">
               <a className="text-decoration-none"></a>
               <div className="dropdown  ">
-                <span className="dropdown-toggle fw-bold ">Prime</span>
+                <span className="dropdown-toggle fw-bold ">{t("prim")}</span>
                 <ul className="dropdown-menu ">
                   <li className="px-2 ">
                     <img src="./Images/pimepic.png" alt="" />
@@ -1353,7 +1388,7 @@ const Sidebar = () => {
             </li>
 
             <li className="mx-">
-              <a className="text-decoration-none">Home</a>
+              <a className="text-decoration-none">{t("home_page")}</a>
             </li>
 
             <li className="mx-">
@@ -1361,18 +1396,18 @@ const Sidebar = () => {
             </li>
 
             <li className="mx-">
-              <a className="text-decoration-none">Help</a>
+              <a className="text-decoration-none">{t("help_page")}</a>
             </li>
 
             <li className="mx-">
-              <a className="text-decoration-none">Fashion</a>
+              <a className="text-decoration-none"> {t("fashion_Page")}</a>
             </li>
 
             <li className="mx-">
-              <a className="text-decoration-none">Appliances</a>
+              <a className="text-decoration-none">{t("amazon_app")}</a>
             </li>
             <li className="mx-">
-              <a className="text-decoration-none">Mobile Phones</a>
+              <a className="text-decoration-none">{t("amazon_phon")}</a>
             </li>
           </ul>
         </div>

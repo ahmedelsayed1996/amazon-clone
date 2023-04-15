@@ -5,9 +5,16 @@ import changeCards, { changeCounter } from "../../store/action";
 import { collection, getDocs, orderBy, query, where } from "@firebase/firestore";
 import { db } from '../../firebase';
 
-
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
 
 const Mobile = () => {
+     //language
+     const currentLanguageCode = cookies.get('i18next') || 'en'
+     const { t } = useTranslation();
+
+
   const [Mobile, setMobile] = useState([]);
   const cards = useSelector((state) => state.card);
   const counter = useSelector((state) => state.count);
@@ -61,7 +68,7 @@ const Mobile = () => {
       {categories.map((cat, index) => {
           return (
             <div key={index}>
-              <h1>{cat.name}</h1>
+              <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
             <img
               className="card-img-top "
               src={cat.image}
@@ -70,42 +77,34 @@ const Mobile = () => {
             </div>
           )
         })}
-        {Mobile.map((prd, index) => {
-  return (
-    <div className="col-md-4 my-3" key={index}>
-      <div className="card">
-        <img
-          className="card-img-top"
-          src={prd.image}
-          alt={prd.name}
-          style={{ maxWidth: "100%", height: "auto", objectFit: "cover" }}
-        />
-        <div className="card-body">
-          <h5 className="card-title">{prd.name}</h5>
-          <p className="card-text mb-2"><strong>Description:</strong> {prd.description}</p>
-          <h3 className="mb-4">Price: {prd.price}</h3>
-          <button
-            className="btn btn-warning btn-sm"
-            onClick={() => {
-              dispatch(changeCards([...cards, prd]));
-              dispatch(changeCounter(counter + 1));
-            }}
-            style={{
-              fontSize: "14px",
-              borderWidth: "3px",
-              borderRadius: "10px",
-              borderStyle: "solid",
-              padding: "0 20px",
-              textTransform: "uppercase"
-            }}
-          >
-            Add to Cart
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-})}
+
+        {Mobile.map((prd,index) => {
+          return (
+            <div class="col-md-4 my-3" key={index}>
+              <div class="card ">
+                <img
+                  className="card-img-top h-50"
+                  src={prd.image}
+                  alt="Card image cap"
+                />
+                <div class="card-body ">
+                  <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong>{t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h3>{t("price")} {prd.price}</h3>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      dispatch(changeCards([...cards, prd]));
+                      dispatch(changeCounter(counter + 1));
+                    }}
+                  >{t("addcart")}
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
       </div>
       {/* <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col-md-4 my-3">

@@ -6,7 +6,19 @@ import changeCards, { changeCounter } from "../../store/action";
 import { collection, getDocs, query, where } from "@firebase/firestore";
 import { db } from "../../firebase";
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import cookies from 'js-cookie';
+
+
+
 const Accessories = () => {
+
+     //language
+     const currentLanguageCode = cookies.get('i18next') || 'en'
+     const { t } = useTranslation();
+
+
   const [accessoriy, setaccessoriy] = useState([]);
   const [categories, setCategory] = useState([]);
 
@@ -69,12 +81,14 @@ const Accessories = () => {
         {categories.map((cat, index) => {
           return (
             <div key={index}>
-              <h1>{cat.name}</h1>
-              <img
-                className="card-img-top "
-                src={cat.image}
-                alt="Card image cap"
-              />
+
+              <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
+            <img
+              className="card-img-top "
+              src={cat.image}
+              alt="Card image cap"
+            />
+
             </div>
           );
         })}
@@ -92,17 +106,13 @@ const Accessories = () => {
                   src={prd.image}
                   alt="Card image cap"
                 />
-                <div class="card-body ">
-                  <h5 className="card-title">
-                    <strong>{prd.name}</strong>
-                  </h5>
-                  <p
-                    className="card-text lead"
-                    style={{ height: "6rem", overflow: "hidden" }}
-                  >
-                    <strong>Description :</strong> {prd.description}
-                  </p>
-                  <h3>Price : {prd.price}</h3>
+
+                <div class="card-body">
+
+                  <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h3>{t("price")} {prd.price}</h3>
+
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
                   <button
                     style={{
@@ -124,7 +134,7 @@ const Accessories = () => {
                       dispatch(changeCounter(counter + 1));
                     }}
                   >
-                    Add To Cards
+                    {t("addcart")}
                   </button>
                 </div>
               </div>
