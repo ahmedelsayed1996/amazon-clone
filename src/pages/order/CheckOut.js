@@ -44,7 +44,7 @@ const CheckOut = () => {
     // }, [checker]);
     return (
         <div className='container-fluid my-3'>
-            {/* <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button> */}
+            <button type='submit' className='btn btn-success' onClick={handelOrder}>test</button>
             <div className='row'>
                 <div className="accordion col-lg-8 col-md-6" id="accordionExample">
                     <div className="accordion-item">

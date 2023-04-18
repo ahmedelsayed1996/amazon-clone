@@ -1,5 +1,5 @@
 // import { Route, Routes } from 'react-router-dom';
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 
 import "./App.css";
 import Footer from "./Components/footer/footer";
@@ -25,31 +25,33 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { useAuth } from "./context/GlobalProvider";
 import CheckOut from "./pages/order/CheckOut";
+import PageNotFound from "./pages/pagenotfound/pageNotFound";
+
 
 
 function App() {
-  const {dispatch} =useAuth()
-  useEffect(()=>{
-auth.onAuthStateChanged((authuser)=>{
-if(authuser){
-dispatch({
+  const { dispatch } = useAuth()
+  useEffect(() => {
+    auth.onAuthStateChanged((authuser) => {
+      if (authuser) {
+        dispatch({
 
-  type:"SET_USER",
-  user:authuser,
-});
-  
-}else{
-  dispatch({
+          type: "SET_USER",
+          user: authuser,
+        });
 
-    type:"SET_USER" ,
-    user:null,
-  });
+      } else {
+        dispatch({
 
-}
-}
- )
+          type: "SET_USER",
+          user: null,
+        });
 
-   },[])
+      }
+    }
+    )
+
+  }, [])
   return (
     <>
       <Header />
@@ -69,10 +71,13 @@ dispatch({
         <Route path="/videos" element={<Videos />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/signup"element={<Signup/>}/>
-        <Route path="/login"element={<Login/>}/>
-        <Route path="/checkout"element={<CheckOut />}/>
-
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        {/* <Route path="*" component={<PageNotFound/> } /> */}
+        <Route path="/404" element={<PageNotFound />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+        
       </Routes>
       <Footer />
     </>
