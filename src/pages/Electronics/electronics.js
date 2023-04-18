@@ -115,8 +115,7 @@ const Electronics = () => {
                       dispatch(changeCards([...cards, prd]));
                       dispatch(changeCounter(counter + 1));
                     }}
-                  >
-                    {t("addcart")}
+                  >{t("addcart")}
                   </button>
                 </div>
               </div>

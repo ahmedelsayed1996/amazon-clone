@@ -4,8 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Link } from 'react-router-dom';
 import { db } from '../../firebase';
 import changeCards, { changeCounter } from '../../store/action';
+import { useTranslation } from 'react-i18next';
+import Cookies from 'js-cookie';
 
 const Search = () => {
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
+    const { t } = useTranslation();
 
     const [searchdata, setsearchdata] = useState([]);
     const cards = useSelector((state) => state.card);
@@ -16,7 +20,7 @@ const Search = () => {
     }
     let querysearch = useQuery();
     let search = querysearch.get('name');
-    // console.log(search);
+    console.log(search);
     // useEffect(() => {
     //     searchdata();
     // }, []);
@@ -36,52 +40,78 @@ const Search = () => {
         const q = query(productsRef);
         const querySnapshot = await getDocs(q);
         const products = [];
-        querySnapshot.forEach((doc) => { products.push(doc.data()); });
+        querySnapshot.forEach((doc) => {
+            // console.log(doc.data());
+            products.push(doc.data());
+        });
         setsearchdata(products);
-        const resData = products.filter((ele) => {
-           return ele.name.toLowerCase().includes(search.toLowerCase());
+        const resData = products.filter((element) => {
+            // console.log(typeof(element.name));
+            return element.name.toLowerCase().includes(search.toLowerCase());
         })
-        setsearchdata(resData)
+        console.log(resData);
+        setsearchdata(resData);
     }
-    useEffect(() => { 
+    useEffect(() => {
         fetchPost();
     }, [search])
     return (
         <div className="container">
 
-            {(searchdata == "") ? <h1>We dont have Product {search}</h1> : <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
 
                 {searchdata.map((prd, index) => {
-                    return (
-                        <div class="col-md-4" key={index}>
-                            <div class="card">
+                    <div className="col-md-4 my-3" key={index}>
+                        <h1>{prd.name}</h1>
+                        <div className="card">
+                            <img
+                                style={{
+                                    width: "100%",
+                                    height: "20rem",
+                                    objectFit: "contain",
+                                }}
+                                className="card-img-top"
+                                src={prd.image}
+                                alt="Card image cap"
+                            />
 
-                                <img
-                                    className="card-img-top "
-                                    src={prd.image}
-                                    alt="Card image cap"
-                                />
-                                <div class="card-body">
-                                    <h5 className="card-title">{prd.name}</h5>
-                                    <p className="card-text">{prd.description}</p>
-                                    <h3>Price : {prd.price}</h3>
+                            <div className="card-body">
 
-                                    <button
-                                        className="btn btn-primary"
-                                        onClick={() => {
-                                            dispatch(changeCards([...cards, prd]));
-                                            dispatch(changeCounter(counter + 1));
-                                        }}
-                                    >
-                                        Add To Cards
-                                    </button>
-                                </div>
+                                <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                                <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                                <h3>{t("price")} {prd.price}</h3>
+
+
+                                {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                                <button
+                                    style={{
+                                        fontSize: "14px",
+                                        borderWidth: "3px",
+                                        borderRadius: "10px",
+                                        borderStyle: "solid",
+                                        padding: "0 20px 0 20px",
+                                        marginTop: "1.2rem",
+                                        marginLeft: "4rem",
+                                        // position: "absolute",
+                                        // left: "30%",
+                                        // bottom: "0",
+                                        // marginBottom: "1rem",
+                                    }}
+                                    className="btn btn-warning"
+                                    onClick={() => {
+                                        dispatch(changeCards([...cards, prd]));
+                                        dispatch(changeCounter(counter + 1));
+                                    }}
+                                >
+                                    {t("addcart")}
+
+                                </button>
+
                             </div>
                         </div>
-                    );
+                    </div>
                 })}
             </div>
-            }
         </div>
     );
 }

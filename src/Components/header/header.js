@@ -171,7 +171,7 @@ const Header = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?name=${search}`);
-    setsearch("");
+    // setsearch("");
   };
   useEffect(() => {
     //  console.log(user.uid);
