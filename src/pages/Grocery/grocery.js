@@ -15,14 +15,10 @@ import cookies from 'js-cookie';
 
 
 
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import cookies from 'js-cookie';
-
 
 const Grocery = () => {
 
-   //language
+  
    const currentLanguageCode = cookies.get('i18next') || 'en'
    const { t } = useTranslation();
  
@@ -78,7 +74,8 @@ const Grocery = () => {
         {categories.map((cat, index) => {
           return (
             <div key={index} className="d-flex">
-              {/* <h1 className="d-block">{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
+
+             {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
 
               
             <img

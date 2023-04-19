@@ -9,6 +9,8 @@
     "page_order2": "& Orders",
     "location": "Location",
     "your": "your",
+    "signin": "Sign In",
+    "signout": "Sign Out",
 
     "all_cat":"All Categories",
     "amazon_dev": "Amazon Devices",
@@ -114,17 +116,28 @@
     "login2": "Sign in",
     "signup": "Sign up",
     "username": "User Name",
-    "acount2": " You have already an account"
-
-
+    "acount2": " You have already an account",
     
-
-
-    
-
-
-
-
+    "addaddress": "  1- Add Address",
+    "street": "Street Name",
+    "buildname": "Build name/no",
+    "cityarea": "City/Area",
+    "district": "District",
+    "governorate": "Governorate",
+    "nearest": "Nearest landmark",
+    "addaddress2": "Add Address",
+    "paymentmethod": "2- payment Method",
+    "compliteform": "you must enter Address Form",
+    "itemshipping": "3- Items and shipping",
+    "accordionbody": "This is the third item's accordion body.",
+    "hiddenitem": "It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the",
+    "accordionbody2": ".accordion-body",
+    "transitionitem": ", though the transition does limit overflow.",
+    "ordersummary": "Order Summary",
+    "items": "Items",
+    "shippinghandling:": "Shipping & handling:",
+    "giftorder": " This order contains a gift",
+    "ordertotal": "Order Total :"
     
 
   }

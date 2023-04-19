@@ -86,15 +86,15 @@ const Electronics = () => {
                     height: "20rem",
                     objectFit: "contain",
                   }}
-                  className="card-img-top h-50"
+                  className="card-img-top"
                   src={prd.image}
                   alt="Card image cap"
                 />
+
                 <div class="card-body">
 
-                  
                   <h5 className="card-title">{currentLanguageCode==='en' ? `${prd.name}` : `${prd.namear}`}</h5>
-                  <p className="card-text"><strong>{t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode==='en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
                   <h3>{t("price")} {prd.price}</h3>
 
                   {/* <h3>Rate : {prd.rating.rate}</h3> */}
@@ -107,15 +107,18 @@ const Electronics = () => {
                       padding: "0 20px 0 20px",
                       marginTop: "1.2rem",
                       marginLeft: "4rem",
-                      position: "absolute",
-                      bottom: "5%",
+                      // position: "absolute",
+                      // left: "30%",
+                      // bottom: "0",
+                      // marginBottom: "1rem",
                     }}
                     className="btn btn-warning"
                     onClick={() => {
                       dispatch(changeCards([...cards, prd]));
                       dispatch(changeCounter(counter + 1));
                     }}
-                  >{t("addcart")}
+                  >
+                    {t("addcart")}
                   </button>
                 </div>
               </div>

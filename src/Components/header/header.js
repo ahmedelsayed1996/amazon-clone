@@ -171,7 +171,7 @@ const Header = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?name=${search}`);
-    setsearch("");
+    // setsearch("");
   };
   useEffect(() => {
     //  console.log(user.uid);
@@ -258,13 +258,13 @@ const Header = () => {
               {t("welcome_message")} {user ? `${user.email}` : "Guest"}
             </div>
             <div className="header-optionLineTwo">
-              {user ? "Sign Out" : "Sign In"}
+              {user ? `${t("signout")}` : `${t("signin")}`}
             </div>
           </div>
         </Link>
       </div>
 
-      <Link to="/orders">
+      <Link to={user ? "/cards" : "/login" }>
         <div className="header-option">
           <div className="header-optionLineOne">{t("page_order")}</div>
           <div className="header-optionLineTwo">{t("page_order2")}</div>
