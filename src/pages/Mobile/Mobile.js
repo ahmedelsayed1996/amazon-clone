@@ -23,8 +23,9 @@ const Mobile = () => {
     alert(`the rating is ${newRating}`);
   };
   //language
-  const currentLanguageCode = cookies.get("i18next") || "en";
+  const currentLanguageCode = cookies.get('i18next') || 'en'
   const { t } = useTranslation();
+
 
   const [Mobile, setMobile] = useState([]);
   const cards = useSelector((state) => state.card);
@@ -40,6 +41,7 @@ const Mobile = () => {
     const q = query(productsRef, where("category", "==", "mobile"));
     const querySnapshot = await getDocs(q);
     const products = [];
+
     querySnapshot.forEach((doc) => {
       products.push(doc.data());
     });
@@ -55,7 +57,17 @@ const Mobile = () => {
     });
     console.log(category);
     setCategory(category);
-  };
+  }
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "mobile"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setMobile(products);
+  }
+
 
   useEffect(() => {
     fetchPost();
@@ -81,23 +93,39 @@ const Mobile = () => {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
-            <div key={index}>
-              <h1>
-                {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
-              </h1>
-              <img
-                className="card-img-top "
-                src={cat.image}
-                alt="Card image cap"
-              />
+            <div key={index} className="w-100">
+              <h1>{currentLanguageCode === 'en' ? `${cat.name}` : `${cat.namear}`}</h1>
+              <div >
+                <img
+                  className="card-img-top"
+                  src={cat.image}
+                  alt="Card image cap"
+                />
+              </div>
+
             </div>
           );
         })}
+        <div className="d-block w-100  mt-2">
+          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+            <option className="bg-light "  >Filter by Price</option>
+            <option className="bg-light " value="50">less than 50</option>
+            <option className="bg-light " value="100">up to 50</option>
+            <option className="bg-light " value="9999999">up to 100</option>
+          </select>
+        </div>
+
 
         {Mobile.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
 
+                <div className="card-body">
+
+                  <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h3>{t("price")} {prd.price}</h3>
+                  
               <Link to={`/details/${prd.name}`}>
                 <div className="card">
                   <img

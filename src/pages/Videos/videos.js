@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
 import ReactStars from "react-rating-stars-component";
+
 import { Link } from "react-router-dom";
 
 const Videos = () => {
@@ -76,29 +77,78 @@ const Videos = () => {
   //       console.log(err);
   //     });
   // }, []);
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "game"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setVideos(products);
+  }
   return (
     <div className="container">
+      
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
-            <div key={index}>
-              <h1>
-                {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
-              </h1>
+            <div key={index} className="w-100">
+
+              <h1>{currentLanguageCode === 'en' ? `${cat.name}` : `${cat.namear}`}</h1>
+
               <img
                 className="card-img-top "
                 src={cat.image}
                 alt="Card image cap"
               />
+
             </div>
           );
         })}
+        <div className="d-block w-100 mt-2">
+          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+            <option className="bg-light "  >Filter by Price</option>
+            <option className="bg-light " value="50">less than 50</option>
+            <option className="bg-light " value="100">up to 50</option>
+            <option className="bg-light " value="9999999">up to 100</option>
+          </select>
+      </div>
         {Videos.map((prd, index) => {
           return (
             <div className="col-md-4 my-3" key={index}>
-              <Link to={`/details/${prd.name}`}>
+              <div className="card">
+                <img
+                  style={{
+                    width: "100%",
+                    height: "20rem",
+                    objectFit: "contain",
+                  }}
+                  className="card-img-top"
+                  src={prd.image}
+                  alt="Card image cap"
+                />
+
+                <div className="card-body">
+
+                  <h5 className="card-title">{currentLanguageCode === 'en' ? `${prd.name}` : `${prd.namear}`}</h5>
+                  <p className="card-text"><strong> {t("description")}</strong> {currentLanguageCode === 'en' ? `${prd.description}` : `${prd.descriptionar}`}</p>
+                  <h3>{t("price")} {prd.price}</h3>
+
+                  {/* <h3>Rate : {prd.rating.rate}</h3> */}
+                  <p><ReactStars
+                    index={index}
+                    count={5}
+                    onChange={ratingChanged}
+                    value={index + 1}
+                    size={24}
+                    isHalf={true}
+                    activeColor="#ffd700"
+                  /></p>
+                  <button
+                  <Link to={`/details/${prd.name}`}>
                 <div className="card">
                   <img
+
                     style={{
                       width: "100%",
                       height: "20rem",

@@ -19,7 +19,8 @@ const Grocery = () => {
     alert(`the rating is ${newRating}`);
   };
 
-  const currentLanguageCode = cookies.get("i18next") || "en";
+
+  const currentLanguageCode = cookies.get('i18next') || 'en'
   const { t } = useTranslation();
 
   const [grocery, setgrocery] = useState([]);
@@ -66,13 +67,30 @@ const Grocery = () => {
     fetchcat();
   }, []);
 
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "grocery"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setgrocery(products);
+  }
+
   return (
     <div className="container">
+      <div className="border color-success">
+        <select name="isAvailable" onChange={handelFilter}>
+          <option >Filter by Price</option>
+          <option value="50">less than 50</option>
+          <option value="100">up to 50</option>
+          <option value="9999999">up to 100</option>
+        </select>
+      </div>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {categories.map((cat, index) => {
           return (
-            <div key={index} className="d-flex">
-              {/* <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1> */}
+            <div key={index} className="d-flex w-100" >
 
               <img
                 className="card-img-top w-50"
@@ -84,11 +102,14 @@ const Grocery = () => {
                 src={cat.image[index]}
                 alt="Card image cap"
               />
+
             </div>
           );
         })}
+
         {grocery.map((prd, index) => {
           return (
+
 
             <div class="col-md-4 my-3" key={index}>
               <Link to={`/details/${prd.name}`}>
@@ -99,6 +120,7 @@ const Grocery = () => {
                       height: "20rem",
                       objectFit: "contain",
                     }}
+
                     className="card-img-top"
                     src={prd.image}
                     alt="Card image cap"

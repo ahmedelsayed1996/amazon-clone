@@ -57,6 +57,15 @@ const Electronics = () => {
     console.log(category);
     setCategory(category);
   };
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "mobile"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setElectronics(products);
+  }
 
   useEffect(() => {
     fetchPost();
@@ -68,18 +77,27 @@ const Electronics = () => {
       <div class="row row-cols-1 row-cols-md-3 g-4 d-flex align-items-stretch position-relative">
         {categories.map((cat, index) => {
           return (
-            <div key={index}>
-              <h1>
-                {currentLanguageCode === "en" ? `${cat.name}` : `${cat.namear}`}
-              </h1>
-              <img
-                className="card-img-top "
-                src={cat.image}
-                alt="Card image cap"
-              />
+            <div key={index} className="w-100">
+
+              <h1>{currentLanguageCode==='en' ? `${cat.name}` : `${cat.namear}`}</h1>
+            <img
+              className="card-img-top "
+              src={cat.image}
+              alt="Card image cap"
+            />
+
+
             </div>
           );
         })}
+        <div className="d-block w-100  mt-2">
+          <select className="bg-success btn" name="isAvailable" onChange={handelFilter}>
+            <option className="bg-light "  >Filter by Price</option>
+            <option className="bg-light " value="50">less than 50</option>
+            <option className="bg-light " value="100">up to 50</option>
+            <option className="bg-light " value="9999999">up to 100</option>
+          </select>
+      </div>
         {Electronics.map((prd, index) => {
           return (
             <div class="col-md-4 my-3" key={index}>

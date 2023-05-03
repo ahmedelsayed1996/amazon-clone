@@ -11,6 +11,7 @@ import i18next, { use } from "i18next";
 import cookies from "js-cookie";
 import { Link, json } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import Spinner from 'react-bootstrap/Spinner';
 
 const Accessories = () => {
   const ratingChanged = (newRating) => {
@@ -64,30 +65,24 @@ const Accessories = () => {
     console.log(category);
     setCategory(category);
   };
+  const handelFilter = async (event) => {
+    const q = query(productsRef, where("category", "==", "accessory"), where("price", "<=", parseInt(event.target.value)));
+    const querySnapshot = await getDocs(q);
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push(doc.data());
+    });
+    setaccessoriy(products);
+  }
+
 
   useEffect(() => {
     fetchPost();
     fetchcat();
   }, []);
-
-  // useEffect(() => {
-  //   axioss
-  //     .get("accessoriy")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setProduct(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("cart", JSON.stringify(cards));
-  //   window.localStorage.setItem("count", JSON.stringify(counter));
-  // }, [cards]);
   return (
     <div className="container">
+
       <div class="row row-cols-1 row-cols-md-3 g-1 d-flex align-items-stretch position-relative">
         {categories.map((cat, index) => {
           return (
@@ -137,6 +132,7 @@ const Accessories = () => {
                     </h3>
 
                     {/* <h3>Rate : {prd.rating.rate}</h3> */}
+
                     <p>
                       <ReactStars
                         index={index}
@@ -155,6 +151,7 @@ const Accessories = () => {
           );
         })}
       </div>
+
     </div>
   )
 };
