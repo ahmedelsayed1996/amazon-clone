@@ -43,6 +43,7 @@ const Cards = () => {
   //     setQuantity((prevCount) => prevCount + 1);
   //   }
   // };
+
   return (
     <>
       <div className="container-fluid ">
